@@ -35,8 +35,8 @@
         
         .card {
             position: relative;
-            width: min(100%, 480px);
-            padding: 35px 30px;
+            width: min(100%, 730px);
+            padding: 38px 40px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 24px;
             background: rgba(13, 29, 43, 0.7);
@@ -49,8 +49,8 @@
         .brand { text-align: center; }
         
         .logo-wrap {
-            width: 85%;
-            margin: 0 auto 25px;
+            width: 150px;
+            margin: 0 auto 18px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -64,6 +64,16 @@
             height: auto;
             object-fit: cover;
         }
+
+        .section-title { margin: 30px 0 16px; color: var(--light); font-family: 'Playfair Display', serif; font-size: 1.35rem; }
+        .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .service-card { min-height: 176px; padding: 20px 12px 16px; border: 1px solid rgba(212,175,55,.32); border-radius: 16px; background: linear-gradient(145deg,#19344ddd,#0a1b29ee); color: white; cursor: pointer; box-shadow: 0 10px 24px #0004; transition: transform .25s,border-color .25s,box-shadow .25s; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 15px 30px #0007,0 0 18px #d4af3722; }
+        .service-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 12px; border: 1px solid #d4af3766; border-radius: 13px; color: var(--gold); background: #d4af3712; }
+        .service-icon svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .service-card strong { display: block; color: var(--light); font-size: .95rem; }
+        .service-card p { min-height: 34px; margin: 7px 0 10px; color: #b7c1ca; font-size: .76rem; line-height: 1.45; }
+        .service-card small { color: var(--gold); font-size: .69rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
         
         .eyebrow {
             display: inline-flex;
@@ -108,17 +118,15 @@
             font-weight: 300;
         }
         
-        .links {
-            display: grid;
-            gap: 14px;
-        }
+        .links { display: flex; justify-content: center; gap: 13px; }
         
         .link {
             display: flex;
             align-items: center;
-            gap: 16px;
-            min-height: 70px;
-            padding: 12px 20px;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            padding: 5px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             background: linear-gradient(110deg, rgba(24, 49, 73, 0.6), rgba(16, 35, 52, 0.8));
@@ -137,8 +145,8 @@
         }
         
         .icon {
-            flex: 0 0 46px;
-            height: 46px;
+            flex: 0 0 40px;
+            height: 40px;
             border-radius: 12px;
             display: grid;
             place-items: center;
@@ -152,12 +160,65 @@
         .fb { background: #1877F2; }
         .tt { background: #050505; text-shadow: 2px 1px #25f4ee, -2px -1px #fe2c55; }
         
-        .copy { flex: 1; text-align: left; }
-        .copy strong { display: block; font-weight: 500; font-size: 1.05rem; letter-spacing: 0.02em; }
-        .copy small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.8rem; font-weight: 300; }
-        
-        .arrow { color: var(--gold); font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; }
-        .link:hover .arrow { transform: translateX(4px); }
+        .notice { min-height: 18px; margin: 12px 0 -8px; color: var(--light); font-size: .75rem; text-align: center; }
+        button { font: inherit; }
+        :focus-visible { outline: 3px solid var(--light); outline-offset: 3px; }
+        body.modal-open { overflow: hidden; }
+        .modal { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: #02080ecc; backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: .22s; }
+        .modal.open { opacity: 1; visibility: visible; }
+        .modal-panel { position: relative; width: min(100%,560px); max-height: 88vh; overflow: auto; padding: 34px; border: 1px solid #d4af377a; border-radius: 20px; background: var(--navy); box-shadow: 0 30px 80px #000b; text-align: left; transform: translateY(12px); transition: .22s; }
+        .modal.open .modal-panel { transform: none; }
+        .modal-x { position: absolute; top: 14px; right: 15px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #ffffff0d; color: white; font-size: 1.5rem; cursor: pointer; }
+        .modal-heading { display: flex; align-items: center; gap: 14px; padding-right: 36px; }
+        .modal-heading .service-icon { margin: 0; flex: 0 0 48px; }
+        .modal h2 { margin: 0; color: var(--light); font-family: 'Playfair Display',serif; font-size: 1.8rem; }
+        .modal-description { color: #c5d0d8; line-height: 1.6; }
+        .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; padding: 0; margin: 20px 0; list-style: none; }
+        .service-list li { color: #e1e6e9; font-size: .82rem; }
+        .service-list li:before { content: '✓'; color: var(--gold); margin-right: 7px; }
+        .modal-note { color: var(--muted); font-size: .76rem; line-height: 1.5; }
+        .modal-actions { display: flex; gap: 10px; margin-top: 22px; }
+        .button { padding: 11px 17px; border: 1px solid #d4af3788; border-radius: 10px; background: transparent; color: white; font-weight: 600; cursor: pointer; }
+        .button.gold { background: var(--gold); color: #07131e; }
+        .consult-panel { width: min(100%, 720px); }
+        .consult-head { padding-right: 42px; }
+        .consult-head h2 { margin: 0 0 5px; }
+        .consult-head p { margin: 0; color: var(--muted); font-size: .82rem; }
+        .progress { display: flex; gap: 6px; margin: 18px 0; }
+        .progress span { flex: 1; height: 4px; border-radius: 5px; background: #ffffff18; }
+        .progress span.active { background: var(--gold); }
+        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+        .option-card { padding: 22px; border: 1px solid #d4af3755; border-radius: 15px; background: #11283a; color: white; text-align: left; cursor: pointer; }
+        .option-card:hover { border-color: var(--gold); }
+        .option-card .service-icon { margin: 0 0 14px; }
+        .option-card h3 { margin: 0 0 8px; color: var(--light); }
+        .option-card p { min-height: 88px; color: #c5d0d8; font-size: .82rem; line-height: 1.55; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 18px; }
+        .field { display: flex; flex-direction: column; gap: 6px; color: #e4e8eb; font-size: .8rem; }
+        .field.full { grid-column: 1/-1; }
+        .field input,.field select,.field textarea { width: 100%; padding: 11px; border: 1px solid #526878; border-radius: 9px; background: #071927; color: white; }
+        .field textarea { min-height: 90px; resize: vertical; }
+        .field-error { min-height: 15px; color: #ffb8ad; font-size: .7rem; }
+        .readonly { color: var(--cream); font-weight: 600; }
+        .step-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 22px; }
+        .media-tools { display: flex; flex-wrap: wrap; gap: 10px; }
+        .file-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+        .file-list { display: grid; gap: 8px; margin-top: 14px; }
+        .file-item { display: flex; align-items: center; gap: 10px; padding: 8px; background: #ffffff09; border-radius: 9px; font-size: .75rem; }
+        .file-item img { width: 52px; height: 42px; object-fit: cover; border-radius: 6px; }
+        .file-item span { flex: 1; overflow-wrap: anywhere; }
+        .plain-button { border: 0; background: transparent; color: #ffb8ad; cursor: pointer; }
+        .help,.info-panel { color: var(--muted); font-size: .75rem; line-height: 1.5; }
+        .info-panel { margin-top: 14px; padding: 12px; border-left: 2px solid var(--gold); background: #ffffff08; }
+        .counter { text-align: right; color: var(--muted); font-size: .7rem; }
+        .recording-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 12px; }
+        audio { max-width: 100%; height: 38px; }
+        .surface { padding: 14px 0; border-bottom: 1px solid #ffffff16; }
+        .surface-grid { display: grid; grid-template-columns: 2fr repeat(5,1fr); gap: 8px; }
+        .surface-grid input,.surface-grid select { min-width: 0; padding: 9px; border: 1px solid #526878; border-radius: 8px; background: #071927; color: white; }
+        .area-result { margin: 9px 0 0; color: var(--cream); font-size: .76rem; }
+        .review-box { padding: 15px; border-radius: 12px; background: #ffffff08; color: #d4dde3; font-size: .8rem; line-height: 1.65; white-space: pre-wrap; }
+        .status { min-height: 20px; color: var(--cream); font-size: .78rem; }
         
         .trust {
             display: flex;
@@ -175,10 +236,27 @@
         
         footer { text-align: center; margin-top: 25px; color: #5a6b7c; font-size: 0.75rem; font-weight: 300; }
         
-        @media(max-width: 400px) {
+        @media(max-width: 620px) {
             .card { padding: 30px 20px; }
+            .services { grid-template-columns: 1fr; }
+            .service-card { min-height: auto; }
+            .service-list { grid-template-columns: 1fr; }
+            .modal-panel { padding: 28px 21px; }
+            .modal-actions { flex-direction: column; }
+            .option-grid,.form-grid { grid-template-columns: 1fr; }
+            .field.full { grid-column: auto; }
+            .option-card p { min-height: auto; }
+            .surface-grid { grid-template-columns: 1fr 1fr; }
+            .consult-panel { padding: 25px 18px; }
             .trust { flex-direction: column; gap: 10px; align-items: center; }
         }
+        @media(max-width: 400px) {
+            body { padding: 18px 12px; background-attachment: scroll; }
+            h1 { font-size: 2.15rem; }
+            .links { gap: 8px; }
+            .link { width: 52px; height: 52px; }
+        }
+        @media(prefers-reduced-motion:reduce) { *,*:before,*:after { transition: none !important; } }
     </style>
 </head>
 <body>
@@ -193,31 +271,27 @@
             <p class="tagline">Transforming homes and businesses with refined finishes, reliable workmanship, and lasting quality.</p> <!--[cite: 1] -->
         </header>
         
+        <section aria-labelledby="services-title"><h2 class="section-title" id="services-title">Our Services</h2><div class="services" id="service-cards"></div></section>
+
+        <h2 class="section-title">Connect With Us</h2>
         <nav class="links" aria-label="Business contact links">
-            <a class="link" href="https://wa.me/94771234567" target="_blank">
+            <a class="link" href="#" data-social="whatsapp" aria-label="WhatsApp" title="WhatsApp">
                 <span class="icon wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.7 9.7 0 0 0-8.3 14.7L2.4 21.6l5-1.3A9.8 9.8 0 1 0 12 2Zm0 17.7a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 19.7Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.3 0-.4.1-.6l.6-.8c.1-.2.1-.4 0-.5l-.8-2c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1-.1-.1-.3-.2-.5-.3Z"/></svg></span>
-                <span class="copy"><strong>WhatsApp</strong><small>Request a quotation or chat with us</small></span> <!--[cite: 1] -->
-                <span class="arrow">›</span>
             </a>
             
-            <a class="link" href="https://www.instagram.com/your_username_here" target="_blank">
+            <a class="link" href="#" data-social="instagram" aria-label="Instagram" title="Instagram">
                 <span class="icon ig"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm10.5 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></span>
-                <span class="copy"><strong>Instagram</strong><small>Explore our latest painting projects</small></span> <!--[cite: 1] -->
-                <span class="arrow">›</span>
             </a>
             
-            <a class="link" href="https://www.facebook.com/your_page_name" target="_blank">
+            <a class="link" href="#" data-social="facebook" aria-label="Facebook" title="Facebook">
                 <span class="icon fb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4.2c-.5-.1-2.2-.2-4.1-.2C9 4 6.3 6.4 6.3 10.8V14H2v4.3h4.3V24h5.2v-5.7h4.3l.7-4.3h-5v-2.8C11.5 10 11.8 8 14 8Z"/></svg></span>
-                <span class="copy"><strong>Facebook</strong><small>Follow our updates and customer work</small></span> <!--[cite: 1] -->
-                <span class="arrow">›</span>
             </a>
             
-            <a class="link" href="https://www.tiktok.com/@your_username_here" target="_blank">
+            <a class="link" href="#" data-social="tiktok" aria-label="TikTok" title="TikTok">
                 <span class="icon tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 2h-3.8v13.6a2.9 2.9 0 1 1-2.3-2.8V9a6.7 6.7 0 1 0 6.1 6.7V9.2a9 9 0 0 0 5.2 1.7V7.1A5.3 5.3 0 0 1 15.6 2Z"/></svg></span>
-                <span class="copy"><strong>TikTok</strong><small>Watch transformations and project videos</small></span> <!--[cite: 1] -->
-                <span class="arrow">›</span>
             </a>
         </nav>
+        <p class="notice" id="notice" role="status"></p>
         
         <div class="trust">
             <span>Quality finishes</span> <!--[cite: 1] -->
@@ -227,12 +301,9 @@
         
         <footer>© 2026 Odan Painting Solutions</footer> <!--[cite: 1] -->
     </main>
+    <div class="modal" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description"><div class="modal-panel"><button class="modal-x" type="button" aria-label="Close service details">×</button><div class="modal-heading"><span class="service-icon" id="modal-icon" aria-hidden="true"></span><h2 id="modal-title"></h2></div><p class="modal-description" id="modal-description"></p><ul class="service-list" id="modal-services"></ul><p class="modal-note" id="modal-note"></p><div class="modal-actions"><button class="button gold" id="quote-button" type="button">Request Consultation</button><button class="button modal-close" type="button">Close</button></div></div></div>
+    <div class="modal" id="consult-modal" role="dialog" aria-modal="true" aria-labelledby="consult-title"><div class="modal-panel consult-panel"><button class="modal-x" type="button" aria-label="Close consultation">×</button><header class="consult-head"><h2 id="consult-title">Request Consultation</h2><p id="consult-subtitle"></p></header><div class="progress" id="progress" aria-label="Consultation progress"></div><div id="consult-content"></div><p class="status" id="consult-status" role="status" aria-live="polite"></p></div></div>
     
-    <script>
-        document.querySelectorAll('[data-pending]').forEach(a => a.addEventListener('click', e => {
-            e.preventDefault();
-            alert('This link will be activated when the account details are added.'); /*[cite: 1] */
-        }));
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
